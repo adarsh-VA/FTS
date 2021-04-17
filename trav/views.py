@@ -38,7 +38,7 @@ def upload(request):
                         for chunk in f.chunks():
                             destination.write(chunk) 
                 process(x)
-            fdic.objects.create(foldername=fname,filedic=dic2)
+            
         return render(request, 'uploaded.html') 
     else:
         return render(request, 'upload.html')
