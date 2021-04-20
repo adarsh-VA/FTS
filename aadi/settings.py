@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'test1',
         'USER' : 'postgres',
         'PASSWORD' : '08112000',
-        'HOST' : 'ftsv1.herokuapp.com'
+        'HOST' : 'localhost'
     }
 }
 
