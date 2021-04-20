@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'aadi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test1',
+        'NAME': 'ddkr4n8rnf7d1u',
         'USER' : 'postgres',
-        'PASSWORD' : '08112000',
-        'HOST' : 'localhost'
+        'PASSWORD' : '8ce17c6fc85ac6b5c3a1168635577f967fef78df5d0cf078853032d9275a05b1',
+        'HOST' : 'ec2-54-224-120-186.compute-1.amazonaws.com'
     }
 }
 
