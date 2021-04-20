@@ -1,1 +1,1 @@
-web: gunicorn trav.wsgi
+web: gunicorn aadi.wsgi
