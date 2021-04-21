@@ -11,6 +11,6 @@ class destination(models.Model):
 class f(models.Model):
     ff = models.FileField()
 
-class fdic(models.Model):
+class fd(models.Model):
     foldername = models.TextField()
     filedic = models.TextField()

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import destination,f,fdic
+from .models import destination,f,fd
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 import os,json
@@ -38,7 +38,7 @@ def upload(request):
                         for chunk in f.chunks():
                             destination.write(chunk) 
                 process(x)
-            
+            fd.objects.create(foldername=fname,filedic=dic2)
         return render(request, 'uploaded.html') 
     else:
         return render(request, 'upload.html')
