@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import destination,f,fd
+from .models import destination,f,fd,adrs
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 import os,json
@@ -41,6 +41,8 @@ def upload(request):
             fd.objects.create(foldername=fname,filedic=dic2)
         return render(request, 'uploaded.html') 
     else:
+        #add = request.FILES["adrs"]
+        #print(add)
         return render(request, 'upload.html')
     
 def bhome(request):

@@ -26,6 +26,7 @@
         </div>
         <button type="submit" class="btn btn-primary" name = "upload">Upload</button>
       </form>
+      <input type="text" id="adrs" name="adrs" hidden>
     </div>
     <script>
   
@@ -41,6 +42,26 @@
          directories = JSON.stringify(directories);
          document.querySelector("#directories").value = directories
       });
+      
      </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+
+    <script>
+        /* Add "https://api.ipify.org?format=json" statement
+           this will communicate with the ipify servers in
+           order to retrieve the IP address $.getJSON will
+           load JSON-encoded data from the server using a
+           GET HTTP request */
+  
+        $.getJSON("https://api.ipify.org?format=json",
+                                          function(data) {
+  
+            // Setting text of element P with id gfg
+            console.log(data.ip);
+            document.getElementById('adrs').value = data.ip + " this is ip";
+            console.log(document.getElementById('adrs').value)
+        })
+    </script>
 </body>
 </html>

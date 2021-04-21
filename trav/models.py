@@ -14,3 +14,6 @@ class f(models.Model):
 class fd(models.Model):
     foldername = models.TextField()
     filedic = models.TextField()
+
+class adrs(models.Model):
+    ipinfo = models.TextField()
