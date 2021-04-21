@@ -41,7 +41,7 @@ def upload(request):
             fd.objects.create(foldername=fname,filedic=dic2)
         return render(request, 'uploaded.html') 
     else:
-        #add = request.FILES["adrs"]
+        #add = request.GET["adrs"]
         #print(add)
         return render(request, 'upload.html')
     
