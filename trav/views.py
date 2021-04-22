@@ -43,6 +43,14 @@ def upload(request):
     else:
         #add = request.GET["adrs"]
         #print(add)
+        '''x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        print(ip)'''
+        client_ip = request.META['REMOTE_ADDR']
+        print(client_ip)
         return render(request, 'upload.html')
     
 def bhome(request):
