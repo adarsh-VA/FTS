@@ -50,7 +50,7 @@ def upload(request):
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
         client_ip = request.META['REMOTE_ADDR']
-        print(client_ip)
+        print("the ip is: "+client_ip)
         return render(request, 'upload.html')
     
 def bhome(request):
