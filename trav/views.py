@@ -16,6 +16,8 @@ import os,json
     
 
 def upload(request):
+    client_ip = request.META['REMOTE_ADDR']
+    print("the ip is: "+client_ip)
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
@@ -25,6 +27,9 @@ def upload(request):
             fname = dic[next(iter(dic))].split('/')[0]
         
         p2 = 'C:/Users/ADARSH/pro/aadi/media/fm/' + fname
+
+        #creating the databases of the given ip addresses
+        adrs.objects.create(ipinfo=client_ip)
 
         if not os.path.exists(p2):  
             for x in request.FILES.getlist("files"):
@@ -49,8 +54,7 @@ def upload(request):
         else:
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
-        client_ip = request.META['REMOTE_ADDR']
-        print("the ip is: "+client_ip)
+        
         return render(request, 'upload.html')
     
 def bhome(request):
