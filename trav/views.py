@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import destination,f,fd,adrs
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-import os,json
+import os,json,string,random
 
 '''def upload(request):
     if request.method == 'POST':
@@ -18,6 +18,10 @@ import os,json
 def upload(request):
     client_ip = request.META['REMOTE_ADDR']
     print("the ip is: "+client_ip)
+    S = 10  # number of characters in the string.  
+    # call random.choices() string module to find the string in Uppercase + numeric data.  
+    ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
+    # print the random data  
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
@@ -44,7 +48,7 @@ def upload(request):
                             destination.write(chunk) 
                 process(x)
             fd.objects.create(foldername=fname,filedic=dic2)
-        return render(request, 'uploaded.html') 
+        return render(request, 'uploaded.html',{'rand': ran}) 
     else:
         #add = request.GET["adrs"]
         #print(add)
@@ -55,7 +59,7 @@ def upload(request):
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
         
-        return render(request, 'upload.html')
+        return render(request, 'upload.html',{'rand': ran})
     
 def bhome(request):
     return redirect("home")
