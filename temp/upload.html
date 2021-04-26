@@ -35,6 +35,7 @@
               <input
                 type="text"
                 class="form-control border border-info"
+                id="rand-id"
                 value="{{ rand }}"
                 style="text-align:center;pointer-events: none;"
                 readonly
@@ -105,6 +106,35 @@
             document.getElementById('adrs').value = data.ip + " this is ip";
             console.log(document.getElementById('adrs').value)
         })
+
+        function getCookie(cname) {
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+          for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return 0;
+        }
+
+        (function checkCookie() {
+          var unqid = getCookie("unique-id");
+          if (unqid) {
+           alert("Welcome again " + unqid);
+           console.log("yes cookie is present")
+           document.getElementById("rand-id").value = unqid
+          } 
+          else {
+            document.cookie = "unique-id={{ rand }}; path=/";
+            console.log("cookie is created")
+          }
+        })();
     </script>
 </body>
 </html>

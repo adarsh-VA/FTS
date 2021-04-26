@@ -18,9 +18,15 @@ import os,json,string,random
 def upload(request):
     client_ip = request.META['REMOTE_ADDR']
     print("the ip is: "+client_ip)
+    #cookies printing
+    cook = request.COOKIES.get('unique-id') 
+    print(cook + " : " + type(cook))
+    print("error occured")
     S = 10  # number of characters in the string.  
-    # call random.choices() string module to find the string in Uppercase + numeric data.  
+    # call random.choices() string module to find the string in Uppercase + numeric data. 
+    
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
+    print("rand generated")
     # print the random data  
     if request.method == 'POST':
         print("kaat")
