@@ -20,14 +20,18 @@ def upload(request):
     print("the ip is: "+client_ip)
     #cookies printing
     cook = request.COOKIES.get('unique-id') 
-    print(cook + " : " + type(cook))
+    #unq = json.loads(cook)
+    #print(unq)
+    print(type(cook))
+    #print(type(unq))
     print("error occured")
     S = 10  # number of characters in the string.  
     # call random.choices() string module to find the string in Uppercase + numeric data. 
-    
+
+    if not cook:
+        print("cookie not created")
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
-    print("rand generated")
-    # print the random data  
+ 
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']

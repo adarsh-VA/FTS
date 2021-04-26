@@ -36,7 +36,7 @@
                 type="text"
                 class="form-control border border-info"
                 id="rand-id"
-                value="{{ rand }}"
+                value=""
                 style="text-align:center;pointer-events: none;"
                 readonly
               />
@@ -128,11 +128,12 @@
           if (unqid) {
            alert("Welcome again " + unqid);
            console.log("yes cookie is present")
-           document.getElementById("rand-id").value = unqid
+           document.getElementById("rand-id").value = unqid;
           } 
           else {
             document.cookie = "unique-id={{ rand }}; path=/";
             console.log("cookie is created")
+            document.getElementById("rand-id").value = '{{rand}}';
           }
         })();
     </script>
