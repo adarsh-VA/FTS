@@ -28,8 +28,6 @@ def upload(request):
     S = 10  # number of characters in the string.  
     # call random.choices() string module to find the string in Uppercase + numeric data. 
 
-    if not cook:
-        print("cookie not created")
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
  
     if request.method == 'POST':
