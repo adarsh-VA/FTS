@@ -11,9 +11,7 @@ class destination(models.Model):
 class f(models.Model):
     ff = models.FileField()
 
-class fd(models.Model):
+class userinfo(models.Model):
+    uniqueid = models.TextField()
     foldername = models.TextField()
     filedic = models.TextField()
-
-class adrs(models.Model):
-    ipinfo = models.TextField()
