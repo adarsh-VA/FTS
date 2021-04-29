@@ -35,7 +35,8 @@ def upload(request):
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
-        dic = json.loads(p)
+        recid = request.POST['rec-id']
+        '''dic = json.loads(p)
         dic2 = {}
         if dic[next(iter(dic))].count('/') == 1:
             fname = dic[next(iter(dic))].split('/')[0]
@@ -50,7 +51,9 @@ def upload(request):
         db = userinfo.objects.get(uniqueid=cook)
         db.foldername=fname
         db.filedic=dic2
-        db.save() 
+        db.save()''' 
+        db2 = userinfo.objects.filter(uniqueid=recid).exists()
+        print(db2)
             #fd.objects.create(foldername=fname,filedic=dic2)
         return render(request, 'uploaded.html',{'rand': ran}) 
     else:

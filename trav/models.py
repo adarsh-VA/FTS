@@ -15,3 +15,4 @@ class userinfo(models.Model):
     uniqueid = models.TextField()
     foldername = models.TextField()
     filedic = models.TextField()
+    recdic = models.TextField()
