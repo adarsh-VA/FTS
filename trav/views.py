@@ -29,9 +29,9 @@ def upload(request):
     # call random.choices() string module to find the string in Uppercase + numeric data. 
 
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
-    if not cook:
+    if not cook or not userinfo.objects.filter(uniqueid=cook).exists():
         userinfo.objects.create(uniqueid=ran)
-    
+
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
@@ -70,8 +70,6 @@ def upload(request):
         print(ip)'''
         db4 = userinfo.objects.get(uniqueid=cook)
         recdata = db4.recdic
-        #recdata.replace('\"', '\\"')
-        print(json.dumps(recdata))
         return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
     
 def bhome(request):
