@@ -70,6 +70,8 @@ def upload(request):
         print(ip)'''
         db4 = userinfo.objects.get(uniqueid=cook)
         recdata = db4.recdic
+        #recdata.replace('\"', '\\"')
+        print(json.dumps(recdata))
         return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
     
 def bhome(request):

@@ -152,7 +152,19 @@
           }
           
         })();
-        document.getElementById('rec-area').value = '{{recdata}}';
+        
+        var result = '{&#x27;artificial-intelligence-14-638.jpg&#x27;: &#x27;AI/&#x27;, &#x27;ass.jpg&#x27;: &#x27;AI/&#x27;, &#x27;AStar_algorith_example.pptx&#x27;: &#x27;AI/&#x27;, &#x27;AttendanceList.csv&#x27;: &#x27;AI/&#x27;, &#x27;Constriant_stastifaction_problem_unit.ppt&#x27;: &#x27;AI/&#x27;, &#x27;Examples+of+task+environments.jpg&#x27;: &#x27;AI/&#x27;, &#x27;localsearch_unit1_hill_climbing.pptx&#x27;: &#x27;AI/&#x27;, &#x27;meetingAttendanceList  cse a &amp;b.csv&#x27;: &#x27;AI/&#x27;, &#x27;meetingAttendanceList.csv&#x27;: &#x27;AI/&#x27;, &#x27;q1.jpg&#x27;: &#x27;AI/&#x27;, &#x27;syllabus.jpg&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_informed _Search.ppt&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_Intellegent _agent.ppt&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_Intellegent _agent.pptx&#x27;: &#x27;AI/&#x27;, &#x27;unit1_problemsolving.ppt&#x27;: &#x27;AI/&#x27;, &#x27;unit1_uninformedsearch.ppt&#x27;: &#x27;AI/&#x27;}'
+        var dat = decodeURI("{{recdata}}");
+        console.log(typeof dat);
+        console.log(dat);
+        document.getElementById('rec-area').innerHTML = dat;
+        var res = document.getElementById('rec-area').value;
+        console.log(typeof res);
+        console.log(res);
+        var final = '"' + res + '"';
+        console.log(final);
+        var con = JSON.parse("{'name':'John', 'age':30, 'city':'New York'}");
+        console.log('{{recdata}}');
     </script>
 </body>
 </html>
