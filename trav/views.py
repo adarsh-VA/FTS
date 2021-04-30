@@ -29,7 +29,8 @@ def upload(request):
     # call random.choices() string module to find the string in Uppercase + numeric data. 
 
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
-    if not cook or not userinfo.objects.filter(uniqueid=cook).exists():
+    if not cook:
+        print("cookie created")
         userinfo.objects.create(uniqueid=ran)
 
     if request.method == 'POST':
@@ -58,7 +59,7 @@ def upload(request):
             db3.recdic = dic2
             db3.save()
             #fd.objects.create(foldername=fname,filedic=dic2)
-        return render(request, 'uploaded.html',{'rand': ran}) 
+        return redirect(request, 'uploaded.html',{'rand': ran}) 
     else:
         #add = request.GET["adrs"]
         #print(add)
@@ -68,12 +69,17 @@ def upload(request):
         else:
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
-        db4 = userinfo.objects.get(uniqueid=cook)
-        if db4.recdic == '':
-            recdata = "No received files."
-        else:
-            recdata = db4.recdic
-        return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
+        return render(request, 'upload.html',{'rand': ran})
+
+def receive(request):
+    cook = request.COOKIES.get('unique-id')
+    db4 = userinfo.objects.get(uniqueid=cook)
+    if db4.recdic == '':
+        recdata = "No received files."
+    else:
+        recdata = db4.recdic
+    info = 'hello refreshed'
+    return redirect(request,'upload')
     
 def bhome(request):
     return redirect("home")
