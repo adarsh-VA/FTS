@@ -36,7 +36,7 @@ def upload(request):
         print("kaat")
         p = request.POST['directories']
         recid = request.POST['rec-id']
-        '''dic = json.loads(p)
+        dic = json.loads(p)
         dic2 = {}
         if dic[next(iter(dic))].count('/') == 1:
             fname = dic[next(iter(dic))].split('/')[0]
@@ -51,9 +51,12 @@ def upload(request):
         db = userinfo.objects.get(uniqueid=cook)
         db.foldername=fname
         db.filedic=dic2
-        db.save()''' 
+        db.save()
         db2 = userinfo.objects.filter(uniqueid=recid).exists()
-        print(db2)
+        if db2:
+            db3 = userinfo.objects.get(uniqueid=recid)
+            db3.recdic = dic2
+            db3.save()
             #fd.objects.create(foldername=fname,filedic=dic2)
         return render(request, 'uploaded.html',{'rand': ran}) 
     else:
@@ -65,8 +68,9 @@ def upload(request):
         else:
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
-        
-        return render(request, 'upload.html',{'rand': ran})
+        db4 = userinfo.objects.get(uniqueid=cook)
+        recdata = db4.recdic
+        return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
     
 def bhome(request):
     return redirect("home")
