@@ -68,8 +68,8 @@ def upload(request):
         else:
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
-        db4 = userinfo.objects.get(uniqueid=cook)
-        recdata = db4.recdic
+        #db4 = userinfo.objects.get(uniqueid=cook)
+        recdata = "ok working"
         return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
     
 def bhome(request):
