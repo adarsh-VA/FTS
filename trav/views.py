@@ -27,12 +27,14 @@ def upload(request):
     print("error occured")
     S = 10  # number of characters in the string.  
     # call random.choices() string module to find the string in Uppercase + numeric data. 
-
+    recdata = "No received files."
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
     if not cook:
         print("cookie created")
         userinfo.objects.create(uniqueid=ran)
-
+    else: 
+        db4 = userinfo.objects.get(uniqueid=cook)
+        recdata = db4.recdic
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
@@ -59,7 +61,7 @@ def upload(request):
             db3.recdic = dic2
             db3.save()
             #fd.objects.create(foldername=fname,filedic=dic2)
-        return redirect(request, 'uploaded.html',{'rand': ran}) 
+        return render(request, 'uploaded.html') 
     else:
         #add = request.GET["adrs"]
         #print(add)
@@ -69,7 +71,13 @@ def upload(request):
         else:
             ip = request.META.get('REMOTE_ADDR')
         print(ip)'''
-        return render(request, 'upload.html',{'rand': ran})
+        '''cook = request.COOKIES.get('unique-id')
+        if cook:
+            db4 = userinfo.objects.get(uniqueid=cook)
+            recdata = db4.recdic
+        else:
+            recdata = "No received files."'''
+        return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
 
 def receive(request):
     cook = request.COOKIES.get('unique-id')
