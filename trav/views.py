@@ -35,6 +35,10 @@ def upload(request):
     else: 
         db4 = userinfo.objects.get(uniqueid=cook)
         recdata = db4.recdic
+        if db4.recdic == '':
+            recdata = "No received files."
+        else:
+            recdata = db4.recdic
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
