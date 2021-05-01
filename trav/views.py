@@ -28,17 +28,19 @@ def upload(request):
     S = 10  # number of characters in the string.  
     # call random.choices() string module to find the string in Uppercase + numeric data. 
     recdata = "No received files."
-    ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))    
+    ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))   
     if not cook:
         print("cookie created")
         userinfo.objects.create(uniqueid=ran)
-    else: 
-        db4 = userinfo.objects.get(uniqueid=cook)
-        recdata = db4.recdic
-        if db4.recdic == '':
+    elif not userinfo.objects.filter(uniqueid=cook).exists():
+        userinfo.objects.create(uniqueid=cook)
+    else:
+        db = userinfo.objects.get(uniqueid=cook) 
+        recdata = db.recdic
+        if db.recdic == '':
             recdata = "No received files."
         else:
-            recdata = db4.recdic
+            recdata = db.recdic
     if request.method == 'POST':
         print("kaat")
         p = request.POST['directories']
@@ -55,7 +57,6 @@ def upload(request):
             dic2[x.name] = st[:-len(x.name)]
             
         print(cook)
-        db = userinfo.objects.get(uniqueid=cook)
         db.foldername=fname
         db.filedic=dic2
         db.save()
@@ -65,7 +66,10 @@ def upload(request):
             db3.recdic = dic2
             db3.save()
             #fd.objects.create(foldername=fname,filedic=dic2)
-        return render(request, 'uploaded.html') 
+            return render(request, 'uploaded.html')
+        else:
+            bol = 0
+            return redirect('home')
     else:
         #add = request.GET["adrs"]
         #print(add)
@@ -81,7 +85,8 @@ def upload(request):
             recdata = db4.recdic
         else:
             recdata = "No received files."'''
-        return render(request, 'upload.html',{'rand': ran,'recdata':recdata})
+        bol = 1
+        return render(request, 'upload.html',{'rand': ran,'recdata':recdata,'bol':bol})
 
 def receive(request):
     cook = request.COOKIES.get('unique-id')

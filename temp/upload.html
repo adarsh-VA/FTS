@@ -61,7 +61,7 @@
       <h1>Send Files <span class="badge bg-secondary">FTS</span></h1>
     </div>
     <div class="container my-4">
-      <form method="post" enctype="multipart/form-data" action="upload">
+      <form method="post" enctype="multipart/form-data" action=" ">
         {% csrf_token %}
           <div class="mb-3">
             <!--<label for="fname" class="form-label">Folder Name:</label>
@@ -75,6 +75,9 @@
             <label for="rec-id" class="form-label">Enter Receviers Code</label>
             <input type="text" id="rec-id" name="rec-id" class="form-control">
             <!--<input type="file" class="form-control" name="doc" id="files">-->
+          </div>
+          <div class="alert alert-danger" role="alert" id='alert-msg'>
+            A simple primary alert—check it out!
           </div>
           <button type="submit" class="btn btn-primary" name = "upload">Upload</button>
       </form>
@@ -155,8 +158,7 @@
           }
           
         })();
-        
-        var result = '{&#x27;artificial-intelligence-14-638.jpg&#x27;: &#x27;AI/&#x27;, &#x27;ass.jpg&#x27;: &#x27;AI/&#x27;, &#x27;AStar_algorith_example.pptx&#x27;: &#x27;AI/&#x27;, &#x27;AttendanceList.csv&#x27;: &#x27;AI/&#x27;, &#x27;Constriant_stastifaction_problem_unit.ppt&#x27;: &#x27;AI/&#x27;, &#x27;Examples+of+task+environments.jpg&#x27;: &#x27;AI/&#x27;, &#x27;localsearch_unit1_hill_climbing.pptx&#x27;: &#x27;AI/&#x27;, &#x27;meetingAttendanceList  cse a &amp;b.csv&#x27;: &#x27;AI/&#x27;, &#x27;meetingAttendanceList.csv&#x27;: &#x27;AI/&#x27;, &#x27;q1.jpg&#x27;: &#x27;AI/&#x27;, &#x27;syllabus.jpg&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_informed _Search.ppt&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_Intellegent _agent.ppt&#x27;: &#x27;AI/&#x27;, &#x27;UNit1_Intellegent _agent.pptx&#x27;: &#x27;AI/&#x27;, &#x27;unit1_problemsolving.ppt&#x27;: &#x27;AI/&#x27;, &#x27;unit1_uninformedsearch.ppt&#x27;: &#x27;AI/&#x27;}'
+  
         var dat = decodeURI("{{recdata}}");
         console.log(typeof dat);
         console.log(dat);
@@ -164,10 +166,12 @@
         var res = document.getElementById('rec-area').value;
         console.log(typeof res);
         console.log(res);
-        var final = '"' + res + '"';
-        console.log(final);
-        var con = JSON.parse("{'name':'John', 'age':30, 'city':'New York'}");
-        console.log('{{recdata}}');
+        //alert content
+        var al = document.getElementById('alert-msg')
+        var bol = '{{bol}}'
+        al.hidden = Boolean(Number(bol))
+        console.log(Number(bol))
+        console.log(Boolean(Number(bol)))
     </script>
 </body>
 </html>
