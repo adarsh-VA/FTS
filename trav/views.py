@@ -88,15 +88,6 @@ def upload(request):
         bol = 1
         return render(request, 'upload.html',{'rand': ran,'recdata':recdata,'bol':bol})
 
-def receive(request):
-    cook = request.COOKIES.get('unique-id')
-    db4 = userinfo.objects.get(uniqueid=cook)
-    if db4.recdic == '':
-        recdata = "No received files."
-    else:
-        recdata = db4.recdic
-    info = 'hello refreshed'
-    return redirect(request,'upload')
     
 def bhome(request):
     return redirect("home")

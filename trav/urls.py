@@ -3,6 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.upload, name = 'home'),
-    path('bhome', views.bhome, name = 'bhome'),
-    path('receive', views.receive, name = 'receive')
+    path('bhome', views.bhome, name = 'bhome')
 ]
