@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import destination,f,userinfo
+from .models import destination,f,usertab
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 import os,json,string,random
@@ -31,11 +31,11 @@ def upload(request):
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S))   
     if not cook:
         print("cookie created")
-        userinfo.objects.create(uniqueid=ran)
-    elif not userinfo.objects.filter(uniqueid=cook).exists():
-        userinfo.objects.create(uniqueid=cook)
+        usertab.objects.create(uniqueid=ran)
+    elif not usertab.objects.filter(uniqueid=cook).exists():
+        usertab.objects.create(uniqueid=cook)
     else:
-        db = userinfo.objects.get(uniqueid=cook) 
+        db = usertab.objects.get(uniqueid=cook) 
         recdata = db.recdic
         if db.recdic == '':
             recdata = "No received files."
@@ -60,9 +60,9 @@ def upload(request):
         db.foldername=fname
         db.filedic=dic2
         db.save()
-        db2 = userinfo.objects.filter(uniqueid=recid).exists()
+        db2 = usertab.objects.filter(uniqueid=recid).exists()
         if db2:
-            db3 = userinfo.objects.get(uniqueid=recid)
+            db3 = usertab.objects.get(uniqueid=recid)
             db3.recdic = dic2
             db3.save()
             #fd.objects.create(foldername=fname,filedic=dic2)

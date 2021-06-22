@@ -11,7 +11,7 @@ class destination(models.Model):
 class f(models.Model):
     ff = models.FileField()
 
-class userinfo(models.Model):
+class usertab(models.Model):
     uniqueid = models.TextField()
     foldername = models.TextField()
     filedic = models.TextField()
